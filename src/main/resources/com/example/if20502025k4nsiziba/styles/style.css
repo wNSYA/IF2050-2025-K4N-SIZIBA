@@ -1,0 +1,13 @@
+
+.sidebar_button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #8C8C8C;
+    -fx-border-color: transparent;
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 14px;
+}
+
+.sidebar_button.hovered,
+.sidebar_button.selected {
+    -fx-text-fill: #000000;
+}
