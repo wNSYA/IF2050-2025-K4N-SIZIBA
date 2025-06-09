@@ -25,8 +25,8 @@
             <Font size="8.0" />
          </font>
       </Text>
-      <Label fx:id="gendere" contentDisplay="CENTER" layoutX="61.0" layoutY="49.0" prefHeight="12.0" prefWidth="66.0" style="-fx-background-color: #3B68FF; -fx-background-radius: 10; -fx-alignment: center;" text="Laki-laki" textAlignment="CENTER" textFill="WHITE">
-         <font>
+      <Label fx:id="gendere" alignment="CENTER" layoutX="61.0" layoutY="49.0" prefHeight="11.0" prefWidth="66.0" style="-fx-background-color: #3B68FF; -fx-background-radius: 10;" text="Laki-laki" textFill="WHITE">
+      <font>
             <Font size="8.0" />
          </font>
       </Label>
