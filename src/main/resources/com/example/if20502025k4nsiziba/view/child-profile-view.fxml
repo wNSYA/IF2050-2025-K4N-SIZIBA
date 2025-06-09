@@ -35,7 +35,12 @@
                <Label alignment="CENTER" layoutX="86.0" layoutY="35.0" prefHeight="17.0" prefWidth="58.0" style="-fx-background-color: #B9B9B9; -fx-background-radius: 10;" text="Mother" textFill="WHITE" />
             </children>
          </Pane>
-         <Button fx:id="addChildButton" layoutX="26.0" layoutY="28.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="172.0" style="-fx-background-color: #6ed273;" text="Add Child" textFill="WHITE" onAction="#handleAddChildButton">
+         <Button fx:id="addChildButton" layoutX="26.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleAddChildButton" prefHeight="39.0" prefWidth="172.0" style="-fx-background-color: #6ed273;" text="Add Child" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="deleteChildButton" layoutX="217.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleDeleteChildButton" prefHeight="39.0" prefWidth="172.0" style="-fx-background-color: #6ed273;" text="Delete Child" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>

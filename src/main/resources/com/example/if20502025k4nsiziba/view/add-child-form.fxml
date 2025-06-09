@@ -29,8 +29,8 @@
     <ChoiceBox fx:id="choiceGender">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Male" />
-                <String fx:value="Female" />
+<!--                <String fx:value="Male" />-->
+<!--                <String fx:value="Female" />-->
             </FXCollections>
         </items>
     </ChoiceBox>
