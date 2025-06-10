@@ -7,17 +7,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.Priority;
 import javafx.scene.text.Text;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import com.example.if20502025k4nsiziba.model.Food;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BudgetController {
 
@@ -48,38 +43,37 @@ public class BudgetController {
         try {
             String selectedMeal = mealTypeComboBox.getValue();
             if (selectedMeal == null || selectedMeal.isEmpty()) {
-                showErrorMessage(" Pilih jenis makan terlebih dahulu!");
+                showErrorMessage("⚠️ Pilih jenis makan terlebih dahulu!");
                 return;
             }
 
             String budgetText = budgetField.getText().trim();
             if (budgetText.isEmpty()) {
-                showErrorMessage(" Masukkan budget terlebih dahulu!");
+                showErrorMessage("⚠️ Masukkan budget terlebih dahulu!");
                 return;
             }
 
             double budget = Double.parseDouble(budgetText);
             if (budget <= 0) {
-                showErrorMessage(" Budget harus lebih dari 0!");
+                showErrorMessage("⚠️ Budget harus lebih dari 0!");
                 return;
             }
 
-            List<Food> allFoods = foodController.getDummyFoods();
-            List<Food> filtered = allFoods.stream()
-                    .filter(f -> f.getMealTime().equalsIgnoreCase(selectedMeal) && f.getPrice() <= budget)
-                    .sorted((f1, f2) -> Double.compare(f1.getPrice(), f2.getPrice()))
-                    .collect(Collectors.toList());
+            // Menggunakan database untuk mendapatkan rekomendasi
+            List<Food> filtered = foodController.getFoodRecommendationsByBudget(selectedMeal, budget);
 
             if (filtered.isEmpty()) {
-                showNoResultsMessage(" Tidak ada makanan yang cocok dengan budget Anda.\nCoba tingkatkan budget atau pilih jenis makan lain.");
+                showNoResultsMessage("😔 Tidak ada makanan yang cocok dengan budget Anda.\n" +
+                        "💡 Coba tingkatkan budget atau pilih jenis makan lain.");
             } else {
                 showResults(filtered, selectedMeal, budget);
             }
 
         } catch (NumberFormatException e) {
-            showErrorMessage(" Budget harus berupa angka yang valid!");
+            showErrorMessage("⚠️ Budget harus berupa angka yang valid!");
         } catch (Exception e) {
-            showErrorMessage(" Terjadi kesalahan: " + e.getMessage());
+            showErrorMessage("❌ Terjadi kesalahan: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -112,10 +106,10 @@ public class BudgetController {
         );
         headerBox.setPadding(new Insets(20));
 
-        Text titleText = new Text("Rekomendasi Makanan " + mealType);
+        Text titleText = new Text("🍽Rekomendasi Makanan " + mealType);
         titleText.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: #2C3E50;");
 
-        Text countText = new Text(count + " makanan ditemukan untuk budget Rp " + String.format("%,.0f", budget));
+        Text countText = new Text("✨ " + count + " makanan ditemukan untuk budget Rp " + String.format("%,.0f", budget));
         countText.setStyle("-fx-font-size: 14px; -fx-fill: #7F8C8D;");
 
         headerBox.getChildren().addAll(titleText, countText);
@@ -153,13 +147,26 @@ public class BudgetController {
         Label nameLabel = new Label(food.getName());
         nameLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;");
 
-        Label mealTypeLabel = new Label("• " + food.getMealTime());
-        mealTypeLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #95A5A6;");
+        // Create meal type and category info
+        String infoText = "🕐 " + food.getMealTime();
+        if (food.getCategory() != null && !food.getCategory().isEmpty()) {
+            infoText += " • 📂 " + food.getCategory();
+        }
+        Label infoLabel = new Label(infoText);
+        infoLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #95A5A6;");
 
-        detailsBox.getChildren().addAll(nameLabel, mealTypeLabel);
+        // Add description if available
+        if (food.getDescription() != null && !food.getDescription().isEmpty()) {
+            Label descLabel = new Label("📝 " + food.getDescription());
+            descLabel.setStyle("-fx-font-size: 11px; -fx-text-fill: #BDC3C7; -fx-wrap-text: true;");
+            descLabel.setMaxWidth(300);
+            detailsBox.getChildren().addAll(nameLabel, infoLabel, descLabel);
+        } else {
+            detailsBox.getChildren().addAll(nameLabel, infoLabel);
+        }
 
         // Price
-        Label priceLabel = new Label("Rp " + String.format("%,.0f", food.getPrice()));
+        Label priceLabel = new Label("💰 Rp " + String.format("%,.0f", food.getPrice()));
         priceLabel.setStyle(
                 "-fx-font-size: 16px; " +
                         "-fx-font-weight: bold; " +
@@ -181,16 +188,6 @@ public class BudgetController {
     }
 
     private String getFoodEmoji(String foodName) {
-        String name = foodName.toLowerCase();
-//        if (name.contains("nasi") || name.contains("rice")) return "🍚";
-//        if (name.contains("ayam") || name.contains("chicken")) return "🍗";
-//        if (name.contains("soto") || name.contains("soup")) return "🍲";
-//        if (name.contains("bakso") || name.contains("meatball")) return "🍜";
-//        if (name.contains("mie") || name.contains("noodle")) return "🍝";
-//        if (name.contains("bubur") || name.contains("porridge")) return "🥣";
-//        if (name.contains("sate") || name.contains("satay")) return "🍢";
-//        if (name.contains("gado")) return "🥗";
-//        if (name.contains("pecel")) return "🥙";
         return "🍽";
     }
 
@@ -237,8 +234,7 @@ public class BudgetController {
             return resultBox;
         } else {
             // Create temporary container if neither exists
-            VBox tempContainer = new VBox(10.0);
-            return tempContainer;
+            return new VBox(10.0);
         }
     }
 }
