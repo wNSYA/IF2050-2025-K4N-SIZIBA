@@ -19,6 +19,9 @@ public class DeleteChildDialogController {
     @FXML
     private Button deleteButton;
 
+    @FXML
+    private Button cancelButton;
+
     private final ChildDAO childDAO = new ChildDAO();
 
     private Consumer<Child> onChildDeleted;
@@ -53,4 +56,31 @@ public class DeleteChildDialogController {
         Stage stage = (Stage) deleteButton.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void handleDeleteButtonHover() {
+        deleteButton.setStyle(deleteButton.getStyle() + "; -fx-background-color: #c82333;");
+    }
+
+    @FXML
+    private void handleDeleteButtonExit() {
+        deleteButton.setStyle(deleteButton.getStyle().replace("; -fx-background-color: #c82333;", ""));
+    }
+
+    @FXML
+    private void handleCancelButtonHover() {
+        // Similar implementation for cancel button
+        cancelButton.setStyle(cancelButton.getStyle() + "; -fx-background-color: #000000;");
+    }
+
+    @FXML
+    private void handleCancelButtonExit() {
+        // Similar implementation for cancel button
+        cancelButton.setStyle(cancelButton.getStyle().replace("; -fx-background-color: #000000;", ""));
+    }
+
+
+
+
+
 }
