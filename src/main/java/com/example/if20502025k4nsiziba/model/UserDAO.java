@@ -1,51 +1,40 @@
 package com.example.if20502025k4nsiziba.model;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.if20502025k4nsiziba.database.DatabaseHelper;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserDAO {
-    private final String DB_URL = "jdbc:sqlite:data/users.db";
 
-    public UserDAO() {
-        createTableIfNotExists();
-    }
-
-    private void createTableIfNotExists() {
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             Statement stmt = conn.createStatement()) {
-            String sql = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)";
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void addUser(String name) {
-        String sql = "INSERT INTO users(name) VALUES(?)";
-        try (Connection conn = DriverManager.getConnection(DB_URL);
+    public static boolean login(String username, String password) {
+        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+        try (Connection conn = DatabaseHelper.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, name);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            ResultSet rs = pstmt.executeQuery();
+            return rs.next(); // returns true if user exists
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean register(String username, String password) {
+        String sql = "INSERT INTO users(username, password) VALUES (?, ?)";
+        try (Connection conn = DatabaseHelper.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
             pstmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
+            // Duplicate username or other issue
             e.printStackTrace();
+            return false;
         }
     }
-
-    public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
-        String sql = "SELECT id, name FROM users";
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                users.add(new User(rs.getInt("id"), rs.getString("name")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return users;
-    }
-
-
 }

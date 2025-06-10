@@ -2,23 +2,32 @@ package com.example.if20502025k4nsiziba.model;
 
 public class User {
     private int id;
-    private String name;
+    private String username;
+    private String passwordHash;
+    private String salt;
+    private String createdAt;
 
-    public User(String name) {
-        this.name = name;
+    public User() {}
+
+    public User(String username, String passwordHash, String salt) {
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.salt = salt;
     }
 
-    public User(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    // Getters
+    // Getters and Setters
     public int getId() { return id; }
-    public String getName() { return name; }
+    public void setId(int id) { this.id = id; }
 
-    @Override
-    public String toString() {
-        return name;
-    }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+
+    public String getPasswordHash() { return passwordHash; }
+    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
+
+    public String getSalt() { return salt; }
+    public void setSalt(String salt) { this.salt = salt; }
+
+    public String getCreatedAt() { return createdAt; }
+    public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
 }

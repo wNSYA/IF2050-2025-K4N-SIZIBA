@@ -28,9 +28,16 @@ public class DatabaseHelper {
                     date_added TEXT
                 );
                 """;
+        String userTableSql = """
+            CREATE TABLE IF NOT EXISTS users (
+                username TEXT PRIMARY KEY,
+                password TEXT
+            );
+            """;
         try (Connection conn = connect();
              Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
+            stmt.execute(userTableSql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
