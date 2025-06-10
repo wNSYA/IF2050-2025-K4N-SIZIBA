@@ -26,7 +26,7 @@ public class App extends Application {
 //        stage.show();
 
         DatabaseHelper.initializeDatabase();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/child-profile-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/BudgetView.fxml"));
         Scene scene = new Scene(loader.load());
 
         // Get screen size
