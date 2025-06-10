@@ -1,12 +1,9 @@
 package com.example.if20502025k4nsiziba;
 
-import com.example.if20502025k4nsiziba.controller.UserController;
 import com.example.if20502025k4nsiziba.database.DatabaseHelper;
-import com.example.if20502025k4nsiziba.model.UserDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -44,7 +41,7 @@ public class App extends Application {
         primaryStage.setX((screenWidth - primaryStage.getWidth()) / 2);
         primaryStage.setY((screenHeight - primaryStage.getHeight()) / 2);
 
-        primaryStage.setTitle("JavaFX Sidebar Example");
+        primaryStage.setTitle("SIZIBA");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
