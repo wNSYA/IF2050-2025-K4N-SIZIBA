@@ -10,6 +10,8 @@ import javafx.scene.text.Text;
 
 public class ChildProfileCardController {
 
+    private int id;
+
     @FXML
     private Text profile1; // "Profile (Name)"
 
@@ -41,8 +43,9 @@ public class ChildProfileCardController {
     private TextField handCircumferenceV;
 
     public void setNewChild(Child child){
+        this.id = child.getId();
         setProfileName(child.getName());
-        setAge(""+ child.getAge());
+        setAge(child.getAge());
         String genderString = child.isGender() ? "Laki-Laki" : "Perempuan";
         setGender(genderString);
         setHeight(child.getHeight()+" cm");
@@ -53,13 +56,26 @@ public class ChildProfileCardController {
 
     }
 
+//    @FXML
+//    public void handleUpdateAction(){
+//        Child updatedChild = new Child(
+//                id,
+//
+//        )
+//    }
+
     public void setProfileName(String name) {
         profile1.setText("Profile (" + name + ")");
         profile2.setText("Child Profile (" + name + ")");
     }
 
-    public void setAge(String age) {
-        profileAge.setText(age);
+    public void setAge(int age) {
+        if (age<1){
+            profileAge.setText( "<1 bulan");
+        }
+        else{
+            profileAge.setText((age/12)+" tahun " + (age%12) + " bulan");
+        }
     }
 
     public void setGender(String genderText) {
