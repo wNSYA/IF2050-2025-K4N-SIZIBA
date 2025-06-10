@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="TOP_CENTER" prefWidth="350.0" spacing="10.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.if20502025k4nsiziba.controller.AddIllnessFormController">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Text text="Add Illness Record" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <Label text="Illness Name:" />
+    <TextField fx:id="txtIllnessName" promptText="e.g., Fever, Cold" />
+
+    <Label text="Date of Illness:" />
+    <DatePicker fx:id="datePickerIllness" prefWidth="350.0" />
+
+    <Label text="Description / Notes:" />
+    <TextArea fx:id="txtDescription" promptText="e.g., High temperature, given paracetamol." wrapText="true" />
+
+    <Button fx:id="btnSave" onAction="#handleSave" prefWidth="350.0" text="Save Record" />
+</VBox>

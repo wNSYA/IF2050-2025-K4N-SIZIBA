@@ -10,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class App extends Application {
@@ -29,7 +28,7 @@ public class App extends Application {
 //        stage.show();
 
         DatabaseHelper.initializeDatabase();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/child-profile-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/child-illness-view.fxml"));
         Scene scene = new Scene(loader.load());
 
         // Get screen size
