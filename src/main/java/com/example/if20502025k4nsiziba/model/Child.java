@@ -72,7 +72,7 @@ public class Child {
 
     public int getAge() {
         if (birthDate == null) return 0;
-        return Period.between(birthDate, LocalDate.now()).getYears();
+        return Period.between(birthDate, LocalDate.now()).getYears()*12 + Period.between(birthDate, LocalDate.now()).getMonths();
     }
 
     // Setters
