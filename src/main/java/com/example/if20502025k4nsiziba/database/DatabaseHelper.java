@@ -61,9 +61,20 @@ public class DatabaseHelper {
                     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
                 );
                 """;
+        String createIllnessTableSql = """
+                CREATE TABLE IF NOT EXISTS child_illness (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    child_id INTEGER NOT NULL,
+                    illness_name TEXT NOT NULL,
+                    description TEXT,
+                    date_of_illness TEXT NOT NULL,
+                    FOREIGN KEY (child_id) REFERENCES child (id) ON DELETE CASCADE
+                );
+                """;
         try (Connection conn = connect();
              Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
+            stmt.execute(createIllnessTableSql);
         } catch (SQLException e) {
             e.printStackTrace();
         }

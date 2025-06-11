@@ -2,9 +2,14 @@ package com.example.if20502025k4nsiziba.controller;
 
 import com.example.if20502025k4nsiziba.model.UserDAO;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class UserController {
 
@@ -27,7 +32,19 @@ public class UserController {
         boolean success = UserDAO.login(username, password);
         if (success) {
             showAlert("Login successful!");
-            // TODO: Navigate to main dashboard or home screen
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/if20502025k4nsiziba/view/MainLayout.fxml"));
+                Scene mainScene = new Scene(loader.load());
+
+                Stage stage = (Stage) usernameField.getScene().getWindow();  // Get current window
+                stage.setScene(mainScene);
+                stage.setTitle("SIZIBA Dashboard");
+                stage.setResizable(true);
+                stage.centerOnScreen();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             showAlert("Invalid username or password.");
         }

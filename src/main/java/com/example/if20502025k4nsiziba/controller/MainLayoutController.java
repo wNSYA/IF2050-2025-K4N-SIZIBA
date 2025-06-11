@@ -3,37 +3,44 @@ package com.example.if20502025k4nsiziba.controller;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
-import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
-public class SidebarController {
+public class MainLayoutController {
 
-//    @FXML
-//    private ImageView logoImage;
-
-    @FXML
-    private Button btnChildProfile, btnChildHistory, btnMealPlan, btnFoodNutrition, btnChildIllness;
+    @FXML private AnchorPane contentArea;
+    @FXML private Button btnChildProfile, btnProfile, btnMealPlan, btnChildIllness;
 
     private Button activeButton;
 
     @FXML
     public void initialize() {
-//        // Load logo
-//        File file = new File("img/logo.png");
-//        Image image = new Image(file.toURI().toString());
-//        logoImage.setImage(image);
-
+        setView("/com/example/if20502025k4nsiziba/view/child-profile-view.fxml");
         // Apply animation to buttons
-        List<Button> buttons = List.of(btnChildProfile, btnChildHistory, btnMealPlan, btnFoodNutrition, btnChildIllness);
+        List<Button> buttons = List.of(btnChildProfile, btnProfile, btnMealPlan, btnChildIllness);
         buttons.forEach(this::applyButtonAnimation);
 
         // Set default active button
         setActiveButton(btnChildProfile);
+    }
+
+    public void setView(String fxmlPath) {
+        try {
+            Node node = FXMLLoader.load(getClass().getResource(fxmlPath));
+            contentArea.getChildren().setAll(node);
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void applyButtonAnimation(Button button) {
@@ -56,10 +63,6 @@ public class SidebarController {
                 exitTransition.playFromStart();
             }
         });
-
-        button.setOnAction(e -> {
-            setActiveButton(button);
-        });
     }
 
     private void setActiveButton(Button button) {
@@ -74,13 +77,28 @@ public class SidebarController {
         activeButton.setTranslateX(10); // Keep it shifted
     }
 
-    @FXML
-    private void handleChildProfile(ActionEvent event) {
-        System.out.println("Home clicked");
+
+
+
+    @FXML private void handleChildProfile(ActionEvent event) {
+        setActiveButton(btnChildProfile);
+        setView("/com/example/if20502025k4nsiziba/view/child-profile-view.fxml");
     }
 
-    @FXML
-    private void handleChildHistory(ActionEvent event) {
-        System.out.println("Settings clicked");
+    @FXML private void handleBudget(ActionEvent event) {
+        setActiveButton(btnMealPlan);
+        setView("/com/example/if20502025k4nsiziba/view/Budgetview.fxml");
     }
+
+    @FXML private void handleChildIllness(ActionEvent event) {
+        setActiveButton(btnChildIllness);
+        setView("/com/example/if20502025k4nsiziba/view/child-illness-view.fxml");
+    }
+
+    @FXML private void handleProfile(ActionEvent event){
+        setActiveButton(btnProfile);
+        System.out.println("profile clicked");
+    }
+
+
 }

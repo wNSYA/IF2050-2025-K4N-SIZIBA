@@ -13,20 +13,12 @@
 
 <BorderPane prefHeight="600.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.if20502025k4nsiziba.controller.ChildIllnessController">
 
-    <left>
-        <AnchorPane prefWidth="180.0" style="-fx-background-color: #FFFFFF;">
-            <children>
-                <fx:include source="sidebar.fxml" />
-            </children>
-        </AnchorPane>
-    </left>
-
     <center>
         <BorderPane>
             <left>
                 <VBox prefWidth="220.0" spacing="10.0" style="-fx-background-color: #f0f0f0;">
                     <padding>
-                        <Insets top="10.0" left="10.0" right="10.0" bottom="10.0"/>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>
                     <Label text="Select Child">
                         <font>
@@ -58,7 +50,7 @@
                             </content>
                         </ScrollPane>
 
-                        <Label fx:id="noDataLabel" text="Please select a child from the list on the left." visible="false" AnchorPane.bottomAnchor="280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" style="-fx-alignment: center;">
+                        <Label fx:id="noDataLabel" style="-fx-alignment: center;" text="Please select a child from the list on the left." visible="false" AnchorPane.bottomAnchor="280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <font>
                                 <Font size="18.0" />
                             </font>
