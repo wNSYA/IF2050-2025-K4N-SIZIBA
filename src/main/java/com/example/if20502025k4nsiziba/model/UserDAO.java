@@ -9,30 +9,50 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
-    public static boolean login(String username, String password) {
-        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+    public static User login(String username, String password) {
+        String query = "SELECT * FROM users WHERE username = ? AND password = ?";
         try (Connection conn = DatabaseHelper.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
-            ResultSet rs = pstmt.executeQuery();
-            return rs.next(); // returns true if user exists
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("username"),
+                        rs.getString("password")
+                );
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+        return null;
     }
 
-    public static boolean register(String username, String password) {
-        String sql = "INSERT INTO users(username, password) VALUES (?, ?)";
+    public static boolean register(String name, String username, String password) {
+        String checkQuery = "SELECT id FROM users WHERE username = ?";
+        String insertQuery = "INSERT INTO users (name, username, password) VALUES (?, ?, ?)";
+
         try (Connection conn = DatabaseHelper.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
-            pstmt.executeUpdate();
-            return true;
+             PreparedStatement checkStmt = conn.prepareStatement(checkQuery)) {
+
+            checkStmt.setString(1, username);
+            ResultSet rs = checkStmt.executeQuery();
+            if (rs.next()) return false; // Username exists
+
+            try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
+                insertStmt.setString(1, name);
+                insertStmt.setString(2, username);
+                insertStmt.setString(3, password); // optionally hash
+                insertStmt.executeUpdate();
+                return true;
+            }
+
         } catch (SQLException e) {
-            // Duplicate username or other issue
             e.printStackTrace();
             return false;
         }

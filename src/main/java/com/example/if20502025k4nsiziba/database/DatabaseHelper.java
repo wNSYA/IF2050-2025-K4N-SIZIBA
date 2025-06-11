@@ -19,30 +19,36 @@ public class DatabaseHelper {
     }
 
     private static void createChildTable() {
-        String sql = """
-                CREATE TABLE IF NOT EXISTS child (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT NOT NULL,
-                    gender INTEGER,
-                    birth_date TEXT,
-                    height REAL,
-                    weight REAL,
-                    head_circumference REAL,
-                    hand_circumference REAL,
-                    abdominal_circumference REAL,
-                    date_added TEXT
-                );
-                """;
         String userTableSql = """
             CREATE TABLE IF NOT EXISTS users (
-                username TEXT PRIMARY KEY,
-                password TEXT
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                username TEXT UNIQUE NOT NULL,
+                password TEXT NOT NULL
             );
-            """;
+        """;
+
+        String childTableSql = """
+    CREATE TABLE IF NOT EXISTS child (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        gender INTEGER,
+        birth_date TEXT,
+        height REAL,
+        weight REAL,
+        head_circumference REAL,
+        hand_circumference REAL,
+        abdominal_circumference REAL,
+        date_added TEXT,
+        user_id INTEGER NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    );
+""";
+
         try (Connection conn = connect();
              Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-            stmt.execute(userTableSql);
+            stmt.execute(userTableSql);   // Make sure the users table exists first
+            stmt.execute(childTableSql);  // Then create the child table with user_id
         } catch (SQLException e) {
             e.printStackTrace();
         }

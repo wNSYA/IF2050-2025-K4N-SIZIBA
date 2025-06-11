@@ -1,5 +1,6 @@
 package com.example.if20502025k4nsiziba.controller;
 
+import com.example.if20502025k4nsiziba.SessionManager;
 import com.example.if20502025k4nsiziba.model.Child;
 import com.example.if20502025k4nsiziba.model.ChildDAO;
 import javafx.fxml.FXML;
@@ -31,7 +32,7 @@ public class ChildController {
     public void initialize() {
         try {
             childList.clear();
-            childList.addAll(childDAO.getAllChildren());
+            childList.addAll(childDAO.getAllChildrenByUser(SessionManager.getInstance().getCurrentUser().getId()));
 
             for (Child child : childList) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/if20502025k4nsiziba/view/child-profile-card.fxml"));
@@ -126,7 +127,7 @@ public class ChildController {
     }
 
     public void refreshChildList() {
-        List<Child> children = childDAO.getAllChildren();
+        List<Child> children = childDAO.getAllChildrenByUser(SessionManager.getInstance().getCurrentUser().getId());
         profileCardContainer.getChildren().clear();
 
         for (Child child : children) {

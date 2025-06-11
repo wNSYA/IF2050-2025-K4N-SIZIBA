@@ -2,32 +2,44 @@ package com.example.if20502025k4nsiziba.model;
 
 public class User {
     private int id;
+    private String name;
     private String username;
-    private String passwordHash;
-    private String salt;
-    private String createdAt;
+    private String password;
 
-    public User() {}
-
-    public User(String username, String passwordHash, String salt) {
+    public User(int id, String name, String username, String password) {
+        this.id = id;
+        this.name = name;
         this.username = username;
-        this.passwordHash = passwordHash;
-        this.salt = salt;
+        this.password = password;
     }
 
-    // Getters and Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    // Getters and setters...
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
+    public int getId() {
+        return id;
+    }
 
-    public String getPasswordHash() { return passwordHash; }
-    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
+    public String getName() {
+        return name;
+    }
 
-    public String getSalt() { return salt; }
-    public void setSalt(String salt) { this.salt = salt; }
+    public String getUsername() {
+        return username;
+    }
 
-    public String getCreatedAt() { return createdAt; }
-    public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

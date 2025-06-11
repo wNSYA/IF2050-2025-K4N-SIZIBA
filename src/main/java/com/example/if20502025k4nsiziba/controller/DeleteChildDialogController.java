@@ -1,5 +1,6 @@
 package com.example.if20502025k4nsiziba.controller;
 
+import com.example.if20502025k4nsiziba.SessionManager;
 import com.example.if20502025k4nsiziba.model.Child;
 import com.example.if20502025k4nsiziba.model.ChildDAO;
 import javafx.collections.FXCollections;
@@ -27,7 +28,7 @@ public class DeleteChildDialogController {
     private Consumer<Child> onChildDeleted;
 
     public void initialize() {
-        List<Child> children = childDAO.getAllChildren();
+        List<Child> children = childDAO.getAllChildrenByUser(SessionManager.getInstance().getCurrentUser().getId());
         childListView.setItems(FXCollections.observableArrayList(children));
     }
 
