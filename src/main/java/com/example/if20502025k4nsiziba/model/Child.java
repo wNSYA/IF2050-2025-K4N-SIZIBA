@@ -14,17 +14,13 @@ public class Child {
     private float height;
     private float weight;
     private LocalDate dateAdded;
+    private int userId;
 //
 //    public Child() {}
 
-    public Child(String name,
-                 boolean gender,
-                 LocalDate birthDate,
-                 float height,
-                 float weight,
-                 float headCircumference,
-                 float abdominalCircumference,
-                 float handCircumference) {
+    public Child(String name, boolean gender, LocalDate birthDate,
+                 float height, float weight, float headCircumference,
+                 float abdominalCircumference, float handCircumference, int userId) {
         this.name = name;
         this.gender = gender;
         this.birthDate = birthDate;
@@ -33,19 +29,14 @@ public class Child {
         this.headCircumference = headCircumference;
         this.abdominalCircumference = abdominalCircumference;
         this.handCircumference = handCircumference;
-        this.dateAdded = LocalDate.now(); // Autofill on creation
+        this.userId = userId;
+        this.dateAdded = LocalDate.now();
     }
 
-    public Child (int id,
-                  String name,
-                  boolean gender,
-                  LocalDate birthDate,
-                  float height,
-                  float weight,
-                  float headCircumference,
-                  float abdominalCircumference,
-                  float handCircumference,
-                  LocalDate dateAdded) {
+    public Child(int id, String name, boolean gender, LocalDate birthDate,
+                 float height, float weight, float headCircumference,
+                 float abdominalCircumference, float handCircumference,
+                 LocalDate dateAdded, int userId) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -56,6 +47,7 @@ public class Child {
         this.abdominalCircumference = abdominalCircumference;
         this.handCircumference = handCircumference;
         this.dateAdded = dateAdded;
+        this.userId = userId;
     }
 
     // Getters
@@ -69,6 +61,10 @@ public class Child {
     public float getHandCircumference() { return handCircumference; }
     public float getAbdominalCircumference() { return abdominalCircumference; }
     public LocalDate getDateAdded() { return dateAdded; }
+
+    public int getUserId() {
+        return userId;
+    }
 
     public int getAge() {
         if (birthDate == null) return 0;

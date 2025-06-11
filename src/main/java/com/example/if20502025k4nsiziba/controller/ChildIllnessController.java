@@ -1,5 +1,6 @@
 package com.example.if20502025k4nsiziba.controller;
 
+import com.example.if20502025k4nsiziba.SessionManager;
 import com.example.if20502025k4nsiziba.model.Child;
 import com.example.if20502025k4nsiziba.model.ChildDAO;
 import com.example.if20502025k4nsiziba.model.ChildIllness;
@@ -67,7 +68,7 @@ public class ChildIllnessController {
             }
         });
         // Get all children from DAO and add to the list
-        childListView.getItems().setAll(childDAO.getAllChildren());
+        childListView.getItems().setAll(childDAO.getAllChildrenByUser(SessionManager.getInstance().getCurrentUser().getId()));
     }
 
     private void loadIllnessDataForSelectedChild() {

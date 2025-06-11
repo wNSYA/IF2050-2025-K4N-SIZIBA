@@ -11,10 +11,10 @@ public class ChildDAO {
 
     public void insertChild(Child child) {
         String sql = """
-        INSERT INTO child (name, gender, birth_date, height, weight,
-        head_circumference, hand_circumference, abdominal_circumference, date_added)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
-        """;
+    INSERT INTO child (name, gender, birth_date, height, weight,
+    head_circumference, hand_circumference, abdominal_circumference, date_added, user_id)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+""";
 
         try (Connection conn = DatabaseHelper.connect();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -28,6 +28,7 @@ public class ChildDAO {
             stmt.setFloat(7, child.getHandCircumference());
             stmt.setFloat(8, child.getAbdominalCircumference());
             stmt.setString(9, child.getDateAdded().toString());
+            stmt.setInt(10, child.getUserId());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -59,13 +60,13 @@ public class ChildDAO {
         return null;
     }
 
-    public List<Child> getAllChildren() {
+    public List<Child> getAllChildrenByUser(int userId) {
         List<Child> list = new ArrayList<>();
-        String sql = "SELECT * FROM child";
+        String sql = "SELECT * FROM child WHERE user_id = ?";
         try (Connection conn = DatabaseHelper.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 list.add(buildChildFromResultSet(rs));
             }
@@ -77,10 +78,10 @@ public class ChildDAO {
 
     public void updateChild(Child child) {
         String sql = """
-            UPDATE child SET
-                name = ?, gender = ?, birth_date = ?, height = ?, weight = ?,
-                head_circumference = ?, hand_circumference = ?, abdominal_circumference = ?, date_added = ?
-            WHERE id = ?;
+                UPDATE child SET
+                    name = ?, gender = ?, birth_date = ?, height = ?, weight = ?,
+                    head_circumference = ?, hand_circumference = ?, abdominal_circumference = ?, date_added = ?, user_id = ?
+                WHERE id = ?;
             """;
         try (Connection conn = DatabaseHelper.connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -124,7 +125,8 @@ public class ChildDAO {
                 rs.getFloat("head_circumference"),
                 rs.getFloat("abdominal_circumference"),
                 rs.getFloat("hand_circumference"),
-                LocalDate.parse(rs.getString("date_added"))
+                LocalDate.parse(rs.getString("date_added")),
+                rs.getInt("user_id")
         );
     }
 }

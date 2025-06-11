@@ -8,15 +8,6 @@
 
 <BorderPane prefHeight="600.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.if20502025k4nsiziba.controller.ChildController">
 
-    <!-- Sidebar on the left -->
-    <left>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF;">
-            <children>
-                <fx:include source="sidebar.fxml" />
-            </children>
-        </AnchorPane>
-    </left>
-
     <!-- Main content area in the center -->
     <center>
         <AnchorPane id="addButton" fx:id="mainContentPane" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="966.0" style="-fx-background-color: linear-gradient(to bottom, #A4E5FF, #F4F4F4);">

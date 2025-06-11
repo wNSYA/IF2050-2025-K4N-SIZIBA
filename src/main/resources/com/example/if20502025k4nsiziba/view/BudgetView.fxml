@@ -1,62 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.if20502025k4nsiziba.controller.BudgetController"
-            prefWidth="1130.0" prefHeight="600.0">
-
-    <!-- Sidebar -->
-    <left>
-        <AnchorPane prefWidth="180.0" style="-fx-background-color: #FFFFFF;">
-            <children>
-                <fx:include source="sidebar.fxml" />
-            </children>
-        </AnchorPane>
-    </left>
+<BorderPane prefHeight="600.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.if20502025k4nsiziba.controller.BudgetController">
 
     <!-- Main content -->
     <center>
-        <AnchorPane fx:id="mainContentPane" prefWidth="950.0" prefHeight="600.0"
-                    style="-fx-background-color: linear-gradient(to bottom, #A4E5FF, #F4F4F4);">
+        <AnchorPane fx:id="mainContentPane" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: linear-gradient(to bottom, #A4E5FF, #F4F4F4);">
             <children>
                 <!-- Container untuk centering content -->
-                <VBox alignment="CENTER" prefWidth="950.0" prefHeight="600.0"
-                      spacing="0" style="-fx-background-color: transparent;">
+                <VBox alignment="CENTER" prefHeight="600.0" prefWidth="950.0" spacing="0" style="-fx-background-color: transparent;">
                     <padding>
-                        <Insets top="40.0" bottom="20.0" left="50.0" right="50.0" />
+                        <Insets bottom="20.0" left="50.0" right="50.0" top="40.0" />
                     </padding>
 
                     <!-- Main content box - Fixed Form Section -->
-                    <VBox spacing="25.0" alignment="TOP_CENTER"
-                          style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);"
-                          prefWidth="600.0" maxWidth="600.0">
+                    <VBox alignment="TOP_CENTER" maxWidth="600.0" prefWidth="600.0" spacing="25.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);">
                         <padding>
-                            <Insets top="30.0" bottom="30.0" left="40.0" right="40.0" />
+                            <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
                         </padding>
 
                         <!-- Header -->
-                        <VBox spacing="10.0" alignment="CENTER">
-                            <Text text="Meal Plan Budget"
-                                  style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #2C3E50;" />
-                            <Text text="Masukkan budget Anda untuk mendapatkan rekomendasi makanan terbaik!"
-                                  style="-fx-font-size: 14px; -fx-fill: #7F8C8D; -fx-text-alignment: center;"
-                                  wrappingWidth="500.0" />
+                        <VBox alignment="CENTER" spacing="10.0">
+                            <Text style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #2C3E50;" text="Meal Plan Budget" />
+                            <Text style="-fx-font-size: 14px; -fx-fill: #7F8C8D; -fx-text-alignment: center;" text="Masukkan budget Anda untuk mendapatkan rekomendasi makanan terbaik!" wrappingWidth="500.0" />
                         </VBox>
 
                         <!-- Form Section -->
-                        <VBox spacing="20.0" alignment="CENTER" prefWidth="520.0">
+                        <VBox alignment="CENTER" prefWidth="520.0" spacing="20.0">
 
                             <!-- Meal Type Section -->
-                            <VBox spacing="8.0" alignment="CENTER_LEFT" prefWidth="400.0">
-                                <Label text="Jenis Makan" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
-                                <ComboBox fx:id="mealTypeComboBox" prefWidth="400.0" prefHeight="45.0"
-                                          style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0;">
+                            <VBox alignment="CENTER_LEFT" prefWidth="400.0" spacing="8.0">
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Jenis Makan" />
+                                <ComboBox fx:id="mealTypeComboBox" prefHeight="45.0" prefWidth="400.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0;">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="Pagi" />
@@ -68,39 +55,31 @@
                             </VBox>
 
                             <!-- Budget Section -->
-                            <VBox spacing="8.0" alignment="CENTER_LEFT" prefWidth="400.0">
-                                <Label text="Budget (Rp)" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
-                                <TextField fx:id="budgetField" promptText="Contoh: 15000"
-                                           prefWidth="400.0" prefHeight="45.0"
-                                           style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-font-size: 14px;" />
+                            <VBox alignment="CENTER_LEFT" prefWidth="400.0" spacing="8.0">
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Budget (Rp)" />
+                                <TextField fx:id="budgetField" prefHeight="45.0" prefWidth="400.0" promptText="Contoh: 15000" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-font-size: 14px;" />
                             </VBox>
 
                             <!-- Button Section -->
-                            <VBox spacing="0" alignment="CENTER" prefWidth="400.0">
+                            <VBox alignment="CENTER" prefWidth="400.0" spacing="0">
                                 <padding>
                                     <Insets top="10.0" />
                                 </padding>
-                                <Button text="🔍 Dapatkan Rekomendasi"
-                                        onAction="#handleGetRecommendation"
-                                        style="-fx-background-color: linear-gradient(to right, #ff7e7e, #ff6ec7); -fx-text-fill: white; -fx-background-radius: 8; -fx-font-size: 14px; -fx-font-weight: bold;"
-                                        prefWidth="400.0" prefHeight="45.0"
-                                />
+                                <Button onAction="#handleGetRecommendation" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(to right, #ff7e7e, #ff6ec7); -fx-text-fill: white; -fx-background-radius: 8; -fx-font-size: 14px; -fx-font-weight: bold;" text="🔍 Dapatkan Rekomendasi" />
                             </VBox>
 
                         </VBox>
                     </VBox>
 
                     <!-- Scrollable Result Section -->
-                    <ScrollPane fitToWidth="true" prefWidth="600.0" maxWidth="600.0"
-                                prefHeight="250.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+                    <ScrollPane fitToWidth="true" maxWidth="600.0" prefHeight="250.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-background: transparent;">
                         <VBox.margin>
                             <Insets top="20.0" />
                         </VBox.margin>
                         <content>
-                            <VBox fx:id="resultBox" spacing="15.0" alignment="CENTER" prefWidth="580.0"
-                                  style="-fx-background-color: transparent;">
+                            <VBox fx:id="resultBox" alignment="CENTER" prefWidth="580.0" spacing="15.0" style="-fx-background-color: transparent;">
                                 <padding>
-                                    <Insets top="10.0" bottom="10.0" left="10.0" right="10.0" />
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                 </padding>
                             </VBox>
                         </content>

@@ -1,5 +1,6 @@
 package com.example.if20502025k4nsiziba.controller;
 
+import com.example.if20502025k4nsiziba.SessionManager;
 import com.example.if20502025k4nsiziba.model.Child;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -51,7 +52,7 @@ public class AddChildFormController {
             float abdCirc = Float.parseFloat(txtAbdCirc.getText());
             float handCirc = Float.parseFloat(txtHandCirc.getText());
 
-            Child child = new Child(name, isMale, birthDate, height, weight, headCirc, abdCirc, handCirc);
+            Child child = new Child(name, isMale, birthDate, height, weight, headCirc, abdCirc, handCirc, SessionManager.getInstance().getCurrentUser().getId());
 
             if (onChildCreated != null) {
                 onChildCreated.accept(child); // Let parent controller handle DB and UI

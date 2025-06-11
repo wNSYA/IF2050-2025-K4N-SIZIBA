@@ -25,7 +25,7 @@ public class App extends Application {
 //        stage.show();
 
         DatabaseHelper.initializeDatabase();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/child-illness-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/login.fxml"));
         Scene scene = new Scene(loader.load());
 
         // Get screen size
@@ -33,9 +33,8 @@ public class App extends Application {
         double screenWidth = screenBounds.getWidth();
         double screenHeight = screenBounds.getHeight();
 
-        // Example: set stage to 80% of screen size
-        primaryStage.setWidth(screenWidth * 0.9);
-        primaryStage.setHeight(screenHeight * 0.9);
+        primaryStage.setWidth(screenWidth);
+        primaryStage.setHeight(screenHeight);
 
         // Optional: center the stage
         primaryStage.setX((screenWidth - primaryStage.getWidth()) / 2);

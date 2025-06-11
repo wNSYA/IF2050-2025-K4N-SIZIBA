@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Text?>
+<BorderPane fx:id="mainBorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.if20502025k4nsiziba.controller.MainLayoutController">
+
+    <left>
+        <VBox alignment="TOP_CENTER" prefHeight="339.0" prefWidth="176.0" spacing="5.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+
+            <ImageView fitHeight="56.0" fitWidth="155.0" preserveRatio="true">
+                <VBox.margin>
+                    <Insets bottom="25.0" />
+                </VBox.margin>
+                <Image url="@img/logo.png" />
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MENU" wrappingWidth="134.13674676418304" />
+
+            <Button fx:id="btnChildProfile" mnemonicParsing="false" prefHeight="35.0" prefWidth="179.0" styleClass="sidebar_button" text="Child Profile" onAction="#handleChildProfile" />
+            <Button fx:id="btnMealPlan" mnemonicParsing="false" prefHeight="35.0" prefWidth="179.0" styleClass="sidebar_button" text="Meal Plan" onAction="#handleBudget"/>
+            <Button fx:id="btnChildIllness" mnemonicParsing="false" prefHeight="35.0" prefWidth="179.0" styleClass="sidebar_button" text="Child Illness" onAction="#handleChildIllness" />
+            <Button fx:id="btnProfile" mnemonicParsing="false" prefHeight="35.0" prefWidth="179.0" styleClass="sidebar_button" text="Profile" onAction="#handleProfile" />
+        </VBox>
+    </left>
+
+    <center>
+        <!-- Placeholder for dynamic content -->
+        <AnchorPane fx:id="contentArea"/>
+    </center>
+</BorderPane>
