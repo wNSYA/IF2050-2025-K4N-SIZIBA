@@ -13,10 +13,10 @@ public class ChildProfileCardController {
     private int id;
 
     @FXML
-    private Text profile1; // "Profile (Name)"
+    private Label profile1; // "Profile (Name)"
 
     @FXML
-    private Text profile2; // "Child Profile (Name)"
+    private Label profile2; // "Child Profile (Name)"
 
     @FXML
     private Text profileAge;

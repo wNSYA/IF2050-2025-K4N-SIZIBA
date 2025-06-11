@@ -1,12 +1,15 @@
 package com.example.if20502025k4nsiziba.controller;
 
+import com.example.if20502025k4nsiziba.SessionManager;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -15,7 +18,7 @@ import java.util.List;
 public class MainLayoutController {
 
     @FXML private AnchorPane contentArea;
-    @FXML private Button btnChildProfile, btnProfile, btnMealPlan, btnChildIllness;
+    @FXML private Button btnChildProfile, btnProfile, btnMealPlan, btnChildIllness, btnLogout;
 
     private Button activeButton;
 
@@ -23,7 +26,7 @@ public class MainLayoutController {
     public void initialize() {
         setView("/com/example/if20502025k4nsiziba/view/child-profile-view.fxml");
         // Apply animation to buttons
-        List<Button> buttons = List.of(btnChildProfile, btnProfile, btnMealPlan, btnChildIllness);
+        List<Button> buttons = List.of(btnChildProfile, btnProfile, btnMealPlan, btnChildIllness, btnLogout);
         buttons.forEach(this::applyButtonAnimation);
 
         // Set default active button
@@ -98,6 +101,23 @@ public class MainLayoutController {
     @FXML private void handleProfile(ActionEvent event){
         setActiveButton(btnProfile);
         setView("/com/example/if20502025k4nsiziba/view/profile-view.fxml");
+    }
+
+    @FXML private void handleLogout(ActionEvent event){
+        SessionManager.getInstance().logout();
+        setView("/com/example/if20502025k4nsiziba/view/profile-view.fxml");
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/if20502025k4nsiziba/view/login.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("SIZIBA");
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

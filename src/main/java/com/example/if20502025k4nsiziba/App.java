@@ -12,37 +12,21 @@ import java.io.IOException;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/hello-view.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-//        stage.setTitle("SIZIBA");
-//        stage.setScene(scene);
-//        stage.show();
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/UserView.fxml"));
-//        Parent root = loader.load();
-//        Scene scene = new Scene(root);
-//        stage.setTitle("User Manager");
-//        stage.setScene(scene);
-//        stage.show();
-
         DatabaseHelper.initializeDatabase();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/login.fxml"));
         Scene scene = new Scene(loader.load());
 
-        // Get screen size
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        double screenWidth = screenBounds.getWidth();
-        double screenHeight = screenBounds.getHeight();
-
-        primaryStage.setWidth(screenWidth);
-        primaryStage.setHeight(screenHeight);
-
-        // Optional: center the stage
-        primaryStage.setX((screenWidth - primaryStage.getWidth()) / 2);
-        primaryStage.setY((screenHeight - primaryStage.getHeight()) / 2);
-
         primaryStage.setTitle("SIZIBA");
         primaryStage.setScene(scene);
+        primaryStage.sizeToScene();
         primaryStage.show();
+
+        // Get screen size
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+        // Now we can safely center the stage
+        primaryStage.setX((screenBounds.getWidth() - primaryStage.getWidth()) / 2);
+        primaryStage.setY((screenBounds.getHeight() - primaryStage.getHeight()) / 2);
     }
 
     public static void main(String[] args) {
