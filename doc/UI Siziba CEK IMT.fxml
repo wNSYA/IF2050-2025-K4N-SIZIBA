@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="516.0" prefWidth="384.0" style="-fx-background-radius: 40;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.UISiziba">
+   <children>
+      <Label layoutX="29.0" layoutY="93.0" prefHeight="18.0" prefWidth="97.0" text="Jenis Kelamin">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="180.0" prefHeight="18.0" prefWidth="97.0" style="-fx-background-radius: 10;" text="Usia (Bulan)">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="266.0" prefHeight="26.0" prefWidth="150.0" text="Tinggi Badan (cm)">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="345.0" prefHeight="26.0" prefWidth="142.0" text="Berat Badan (Kg)">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField layoutX="29.0" layoutY="119.0" prefHeight="36.0" prefWidth="320.0" style="-fx-background-radius: 10;" />
+      <TextField layoutX="29.0" layoutY="206.0" prefHeight="36.0" prefWidth="320.0" style="-fx-background-radius: 10;" />
+      <TextField layoutX="29.0" layoutY="292.0" prefHeight="36.0" prefWidth="320.0" style="-fx-background-radius: 10;" />
+      <TextField layoutX="29.0" layoutY="371.0" prefHeight="36.0" prefWidth="320.0" style="-fx-background-radius: 10;" />
+      <Button layoutX="30.0" layoutY="429.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="320.0" style="-fx-background-radius: 15; -fx-background-color: #009BDA;" text="Cek Indeks Massa Tubuh" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="60.0" layoutY="36.0" prefHeight="35.0" prefWidth="264.0" text="SIZIBA IMT CHECKER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
