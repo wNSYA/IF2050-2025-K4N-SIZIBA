@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="400" prefWidth="500" style="-fx-background-color: linear-gradient(to bottom, #A4E5FF, #F4F4F4);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.if20502025k4nsiziba.controller.ProfileController">
+
+    <!-- Main Profile Card -->
+    <VBox alignment="CENTER" maxHeight="350" maxWidth="400" prefHeight="350.0" prefWidth="400.0" spacing="25" style="-fx-background-color: white;                  -fx-background-radius: 20;                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 25, 0, 0, 8);">
+        <padding>
+            <Insets bottom="30" left="40" right="40" top="30" />
+        </padding>
+
+        <!-- Header Section -->
+        <VBox alignment="CENTER" spacing="8">
+
+            <Label style="-fx-font-size: 28px;                           -fx-font-weight: bold;                           -fx-text-fill: #2c3e50;                           -fx-font-family: 'Segoe UI', Arial, sans-serif;" text="User Profile" />
+
+            <Label style="-fx-font-size: 14px;                           -fx-text-fill: #7f8c8d;                           -fx-font-family: 'Segoe UI', Arial, sans-serif;" text="Your account information" />
+        </VBox>
+
+        <!-- Profile Information Section -->
+        <VBox prefWidth="320" spacing="15">
+            <!-- Name Info -->
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #f8f9fa;                            -fx-background-radius: 12;                            -fx-padding: 15 20 15 20;                            -fx-border-color: #e9ecef;                            -fx-border-radius: 12;                            -fx-border-width: 1;">
+                <Label style="-fx-font-size: 14px;                               -fx-font-weight: bold;                               -fx-text-fill: #007aff;                               -fx-font-family: 'Segoe UI', Arial, sans-serif;                               -fx-min-width: 80;" text="Name:" />
+                <Label fx:id="nameLabel" style="-fx-font-size: 14px;                               -fx-text-fill: #2c3e50;                               -fx-font-family: 'Segoe UI', Arial, sans-serif;                               -fx-font-weight: 500;" />
+            </HBox>
+
+            <!-- Username Info -->
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #f8f9fa;                            -fx-background-radius: 12;                            -fx-padding: 15 20 15 20;                            -fx-border-color: #e9ecef;                            -fx-border-radius: 12;                            -fx-border-width: 1;">
+                <Label style="-fx-font-size: 14px;                               -fx-font-weight: bold;                               -fx-text-fill: #007aff;                               -fx-font-family: 'Segoe UI', Arial, sans-serif;                               -fx-min-width: 80;" text="Username:" />
+                <Label fx:id="usernameLabel" style="-fx-font-size: 14px;                               -fx-text-fill: #2c3e50;                               -fx-font-family: 'Segoe UI', Arial, sans-serif;                               -fx-font-weight: 500;" />
+            </HBox>
+
+            <!-- Password Info -->
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #f8f9fa;                            -fx-background-radius: 12;                            -fx-padding: 15 20 15 20;                            -fx-border-color: #e9ecef;                            -fx-border-radius: 12;                            -fx-border-width: 1;">
+                <Label style="-fx-font-size: 14px;                               -fx-font-weight: bold;                               -fx-text-fill: #007aff;                               -fx-font-family: 'Segoe UI', Arial, sans-serif;                               -fx-min-width: 80;" text="Password:" />
+                <Label fx:id="passwordLabel" style="-fx-font-size: 14px;                               -fx-text-fill: #2c3e50;                               -fx-font-family: 'Segoe UI', Arial, sans-serif;                               -fx-font-weight: 500;" />
+            </HBox>
+        </VBox>
+
+        <!-- Action Button Section -->
+        <VBox prefWidth="320" spacing="10">
+            <!-- Edit Profile Button -->
+            <Button maxWidth="Infinity" onAction="#handleEditProfile" prefHeight="45" style="-fx-background-color: #FC37AD; -fx-background-radius: 12; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI', Arial, sans-serif; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(252,55,173,0.3), 12, 0, 0, 3);" text="Edit Profile" />
+        </VBox>
+    </VBox>
+</StackPane>

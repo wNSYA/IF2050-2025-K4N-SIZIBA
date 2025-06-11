@@ -87,16 +87,17 @@ public class Child {
     @Override
     public String toString() {
         String genderString = isGender() ? "Laki-Laki" : "Perempuan";
-        return  "Id: " + getId() + "\n" +
-                "Nama: " + getName() + "\n" +
-                "Tanggal lahir: " + getBirthDate() + "\n" +
-                "Usia: " + getAge() + "\n" +
-                "Tinggi badan: " + getHeight() + "\n" +
-                "Berat badan: " + getWeight() + "\n" +
-                "Jenis kelamin: " + genderString + "\n" +
-                "Lingkar kepala: " + getHeadCircumference() + "\n" +
-                "Lingkar perut: " + getAbdominalCircumference() + "\n" +
-                "Lingkar tangan: " + getHandCircumference() + "\n" +
-                "Date added: " + getDateAdded();
+        return "Nama: " + getName() + "\n";
+//                "Id: " + getId() + "\n" +
+//                "Tanggal lahir: " + getBirthDate() + "\n" +
+//                "Usia: " + getAge() + "\n" +
+//                "Tinggi badan: " + getHeight() + "\n" +
+//                "Berat badan: " + getWeight() + "\n" +
+//                "Jenis kelamin: " + genderString + "\n" +
+//                "Lingkar kepala: " + getHeadCircumference() + "\n" +
+//                "Lingkar perut: " + getAbdominalCircumference() + "\n" +
+//                "Lingkar tangan: " + getHandCircumference() + "\n" +
+//                "Date added: " + getDateAdded()
+//                ;
     }
 }

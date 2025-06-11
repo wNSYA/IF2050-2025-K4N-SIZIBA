@@ -15,7 +15,10 @@
 
 <AnchorPane prefHeight="418.0" prefWidth="200.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.if20502025k4nsiziba.controller.ChildProfileCardController">
    <Pane layoutY="6.0" prefHeight="69.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-background-color: #FFFFFF;">
-      <Text fx:id="profile1" layoutX="61.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile (Rafa)" wrappingWidth="133.4700927734375" />
+      <Label fx:id="profile1" ellipsisString="..." layoutX="60.0" layoutY="17.0" maxWidth="100" text="Profile (Rafa)" textOverrun="ELLIPSIS">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
       <ImageView id="profilePictureV" fitHeight="43.0" fitWidth="81.0" layoutX="10.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/profile.png" />
@@ -50,14 +53,13 @@
          <RowConstraints maxHeight="35.3333740234375" minHeight="12.0" prefHeight="12.0" vgrow="SOMETIMES" />
          <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
       </rowConstraints>
-      <Text fx:id="profile2" strokeType="OUTSIDE" strokeWidth="0.0" text="Child Profile (Rafa)" wrappingWidth="176.13668823242188">
+      <Label fx:id="profile2" ellipsisString="..." layoutX="61.0" layoutY="28.0" maxWidth="187.0" prefHeight="17.0" prefWidth="187.0" text="Profile (Rafa)" textOverrun="ELLIPSIS">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
          <GridPane.margin>
-            <Insets left="10.0" />
-         </GridPane.margin>
-      </Text>
+            <Insets left="10.0" right="10.0" />
+         </GridPane.margin></Label>
       <TextField fx:id="weightV" editable="false" prefHeight="39.0" prefWidth="180.0" promptText="7" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="10.0" right="10.0" />
@@ -128,5 +130,8 @@
             <Insets left="10.0" />
          </GridPane.margin>
       </Text>
+      <padding>
+         <Insets top="10.0" />
+      </padding>
    </GridPane>
 </AnchorPane>
