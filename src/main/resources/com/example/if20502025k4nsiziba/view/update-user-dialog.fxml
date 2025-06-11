@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.if20502025k4nsiziba.controller.UpdateUserDialogController"
+      spacing="10" alignment="CENTER" prefWidth="300" prefHeight="220" style="-fx-padding: 20;">
+
+    <Label text="Update Profile" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+    <TextField fx:id="nameField" promptText="Name" />
+    <TextField fx:id="usernameField" promptText="Username" />
+    <PasswordField fx:id="passwordField" promptText="New Password" />
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Cancel" onAction="#handleCancel"/>
+        <Button text="Update" onAction="#handleUpdate"/>
+    </HBox>
+</VBox>

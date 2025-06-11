@@ -57,4 +57,27 @@ public class UserDAO {
             return false;
         }
     }
+
+    public static boolean updateUser(User user) {
+        String query = "UPDATE users SET name = ?, username = ?, password = ? WHERE id = ?";
+
+        try (Connection conn = DatabaseHelper.connect();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getUsername());
+            stmt.setString(3, user.getPassword()); // optionally hash this
+            stmt.setInt(4, user.getId());
+
+            int affectedRows = stmt.executeUpdate();
+            return affectedRows > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
+
+

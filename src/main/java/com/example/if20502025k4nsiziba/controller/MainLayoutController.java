@@ -97,7 +97,7 @@ public class MainLayoutController {
 
     @FXML private void handleProfile(ActionEvent event){
         setActiveButton(btnProfile);
-        System.out.println("profile clicked");
+        setView("/com/example/if20502025k4nsiziba/view/profile-view.fxml");
     }
 
 
