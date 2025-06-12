@@ -91,4 +91,59 @@ Maven will compile the test sources, run the tests, and provide a summary report
 
 * The application uses **SQLite** as its database.
 * The database file, named `child_health.db`, is automatically created in a `data/` directory within your project's root folder the first time you run the application.
-* All necessary tables (`users`, `child`, `child_illness`, `food`) are also created automatically.
+* All necessary tables are also created automatically. You can add new tables in the `src/main/java/com/example/if20502025k4nsiziba/database/DatabaseHelper.java` file if you wish to create more features.
+
+### Table Schemas
+
+#### `users`
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | INTEGER | PRIMARY KEY AUTOINCREMENT | Unique identifier for the user. |
+| `name` | TEXT | NOT NULL | Full name of the user. |
+| `username` | TEXT | UNIQUE NOT NULL | Unique username for login. |
+| `password` | TEXT | NOT NULL | User's password. |
+
+#### `child`
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | INTEGER | PRIMARY KEY AUTOINCREMENT | Unique identifier for the child. |
+| `name` | TEXT | NOT NULL | Full name of the child. |
+| `gender` | INTEGER | | Gender of the child (1 for Male, 0 for Female). |
+| `birth_date` | TEXT | | Child's date of birth (e.g., '2023-01-30'). |
+| `height` | REAL | | Height in centimeters. |
+| `weight` | REAL | | Weight in kilograms. |
+| `head_circumference`| REAL | | Head circumference in centimeters. |
+| `hand_circumference`| REAL | | Hand circumference in centimeters. |
+| `abdominal_circumference` | REAL | | Abdominal circumference in centimeters. |
+| `date_added` | TEXT | | Date the child's profile was created. |
+| `user_id` | INTEGER | NOT NULL, FOREIGN KEY | Links to the `id` in the `users` table. |
+
+#### `child_illness`
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | INTEGER | PRIMARY KEY AUTOINCREMENT | Unique identifier for the illness record. |
+| `child_id` | INTEGER | NOT NULL, FOREIGN KEY | Links to the `id` in the `child` table. |
+| `illness_name`| TEXT | NOT NULL | The name of the illness. |
+| `description` | TEXT | | A description or notes about the illness. |
+| `date_of_illness`| TEXT | NOT NULL | The date the illness occurred. |
+
+#### `food`
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | INTEGER | PRIMARY KEY AUTOINCREMENT | Unique identifier for the food item. |
+| `name` | TEXT | NOT NULL | Name of the food. |
+| `price` | REAL | NOT NULL | Price of the food item. |
+| `meal_time` | TEXT | NOT NULL | Recommended meal time (e.g., 'Pagi', 'Siang'). |
+| `category` | TEXT | | Category of the food (e.g., 'Makanan Bayi'). |
+| `description` | TEXT | | A brief description of the food. |
+| `is_available`| INTEGER | DEFAULT 1 | Availability status (1 for true, 0 for false). |
+| `created_at` | DATETIME| DEFAULT CURRENT_TIMESTAMP | Timestamp of when the record was created. |
+
+## 8. Task Distribution
+| NIM | Name | Task Distribution 
+| --- | --- | --- |
+| 14422028 | Muhammad Dhani Rizqiawan | Documentation 
+| 14422034 | Robincar Tua Tambunan | Documentation 
+| 18222004 | Muhammad Rifa Ansyari | App Development
+| 18222022 | Louis Ferdyo Gunawan | App Development
+| 18222054 | Natanael Steven Simangunsong | App Development, Documentation
