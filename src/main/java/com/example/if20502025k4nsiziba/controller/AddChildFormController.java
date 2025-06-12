@@ -52,6 +52,8 @@ public class AddChildFormController {
             float abdCirc = Float.parseFloat(txtAbdCirc.getText());
             float handCirc = Float.parseFloat(txtHandCirc.getText());
 
+            if (height <= 0 || weight <=0 || headCirc <=0 || abdCirc <=0 || handCirc <=0){ throw new IllegalArgumentException();}
+
             Child child = new Child(name, isMale, birthDate, height, weight, headCirc, abdCirc, handCirc, SessionManager.getInstance().getCurrentUser().getId());
 
             if (onChildCreated != null) {

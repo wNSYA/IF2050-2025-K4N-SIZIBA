@@ -69,7 +69,8 @@ public class ProfileController {
         if (currentUser != null) {
             nameLabel.setText(currentUser.getName());
             usernameLabel.setText(currentUser.getUsername());
-            passwordLabel.setText(currentUser.getPassword()); // or mask if preferred
+            String masked = "*".repeat(currentUser.getPassword().length());
+            passwordLabel.setText(masked); // or mask if preferred
         }
     }
 

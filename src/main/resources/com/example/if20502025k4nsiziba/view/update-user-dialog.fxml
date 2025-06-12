@@ -41,13 +41,13 @@
 
             <!-- Password Field -->
             <VBox spacing="4">
-                <Label style="-fx-font-size: 11px;-fx-font-weight: bold;-fx-text-fill: #007aff;-fx-font-family: 'Segoe UI', Arial, sans-serif;" text="NEW PASSWORD" />
+                <Label style="-fx-font-size: 11px;-fx-font-weight: bold;-fx-text-fill: #007aff;-fx-font-family: 'Segoe UI', Arial, sans-serif;" text="CURRENT PASSWORD" />
                 <PasswordField fx:id="currentPasswordField" prefHeight="35.0" promptText="Enter current password" style="-fx-background-color: #f8f9fa; -fx-background-radius: 8; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-border-width: 1; -fx-text-fill: #2c3e50; -fx-prompt-text-fill: #95a5a6; -fx-padding: 0 12 0 12; -fx-font-family: 'Segoe UI', Arial, sans-serif;" />
             </VBox>
 
             <!-- Password Field -->
             <VBox spacing="4">
-                <Label style="-fx-font-size: 11px;                               -fx-font-weight: bold;                               -fx-text-fill: #007aff;                               -fx-font-family: 'Segoe UI', Arial, sans-serif;" text="CURRENT PASSWORD" />
+                <Label style="-fx-font-size: 11px;                               -fx-font-weight: bold;                               -fx-text-fill: #007aff;                               -fx-font-family: 'Segoe UI', Arial, sans-serif;" text="NEW PASSWORD" />
                 <PasswordField fx:id="passwordField" prefHeight="35.0" promptText="Enter new password" style="-fx-background-color: #f8f9fa; -fx-background-radius: 8; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-border-width: 1; -fx-text-fill: #2c3e50; -fx-prompt-text-fill: #95a5a6; -fx-padding: 0 12 0 12; -fx-font-family: 'Segoe UI', Arial, sans-serif;" />
             </VBox>
         </VBox>
