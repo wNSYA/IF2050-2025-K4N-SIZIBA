@@ -32,9 +32,45 @@ This application uses a local SQLite database to store all user and child data, 
 
 Before you begin, ensure you have the following software installed on your system:
 
-* **Java Development Kit (JDK):** Version 21 or newer.
-* **Apache Maven:** Version 3.8.x or newer.
-* **An IDE (Optional but Recommended):** IntelliJ IDEA or Eclipse.
+- **Java Development Kit (JDK):** Version 21 or newer.
+- **Apache Maven:** Version 3.8.x or newer.
+- **An IDE (Optional but Recommended):** IntelliJ IDEA or Eclipse.
+
+### 4.1 How to Install Maven
+
+Apache Maven is required to build and run this application. Follow the instructions below based on your operating system.
+
+---
+
+#### **Windows**
+
+1. **Download Maven:**
+    - Visit the official [Maven download page](https://maven.apache.org/download.cgi).
+    - Download the **binary zip archive** (e.g., `apache-maven-3.8.x-bin.zip`).
+
+2. **Extract the Archive:**
+    - Extract the zip file to a preferred location, such as:
+      ```
+      C:\Program Files\Apache\Maven
+      ```
+
+3. **Configure Environment Variables:**
+    - Open **System Properties > Environment Variables**.
+    - Add a new **System Variable**:
+        - **Variable name:** `MAVEN_HOME`
+        - **Variable value:**
+          ```
+          C:\Program Files\Apache\Maven\apache-maven-3.8.x
+          ```
+    - Edit the `Path` system variable and add:
+      ```
+      C:\Program Files\Apache\Maven\apache-maven-3.8.x\bin
+      ```
+
+4. **Verify Installation:**
+   Open **Command Prompt** and run:
+   ```sh
+   mvn -v
 
 ---
 
@@ -144,6 +180,6 @@ Maven will compile the test sources, run the tests, and provide a summary report
 | --- | --- | --- |
 | 14422028 | Muhammad Dhani Rizqiawan | Documentation 
 | 14422034 | Robincar Tua Tambunan | Documentation 
-| 18222004 | Muhammad Rifa Ansyari | App Development
-| 18222022 | Louis Ferdyo Gunawan | App Development
+| 18222004 | Muhammad Rifa Ansyari | App Development, Documentation
+| 18222022 | Louis Ferdyo Gunawan | App Development , Documentation
 | 18222054 | Natanael Steven Simangunsong | App Development, Documentation
